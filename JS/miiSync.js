@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         mii.Sync
+// @name         miiSync
 // @version      1.00
 // @description  stable
 // @author       Miimer
@@ -14,13 +14,13 @@
 
     // prevent overload
 
-    if (window.AyySync) return;
-    window.AyySync = {
+    if (window.MiiSync) return;
+    window.MiiSync = {
         options: {
             startFullscreened: false
         }
     };
-    console.log("AyySync started");
+    console.log("MiiSync started");
 
     // config
 
@@ -34,7 +34,7 @@
 
     $("<style/>")
         .attr("type", "text/css")
-        .attr("id", "ayysync")
+        .attr("id", "MiiSync")
         .text("" +
 "" +
 ".navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-text {\
@@ -870,9 +870,9 @@
         if (!channelOpts) socket.on("channelOpts", function(opts) {
             channelOpts = opts;
         });
-        if (data && data.js && data.js.indexOf("AyySync.onXaekaiLoaded();") === -1) {
+        if (data && data.js && data.js.indexOf("MiiSync.onXaekaiLoaded();") === -1) {
             data.js = data.js.replace("console.info(\"Xaekai's Script Sequencer: Loading Complete.\")",
-                "console.info(\"Xaekai's Script Sequencer: Loading Complete.\");AyySync.onXaekaiLoaded(null);");
+                "console.info(\"Xaekai's Script Sequencer: Loading Complete.\");MiiSync.onXaekaiLoaded(null);");
         }
         oldChannelCSSJS(data);
     };
@@ -975,7 +975,7 @@
 
     // hooking for xaekai
 
-    AyySync.onXaekaiLoaded = function() {
+    MiiSync.onXaekaiLoaded = function() {
         assertDominance();
 
         // fix
@@ -1032,7 +1032,7 @@
         scrollChat();
     });
 
-    if (window.AyySync.options.startFullscreened) {
+    if (window.MiiSync.options.startFullscreened) {
         toggleFw();
     }
 
