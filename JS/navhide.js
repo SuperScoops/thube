@@ -1,0 +1,2 @@
+$("#chatheader").append('<span id="topbutton" class="label pull-right pointer label-topbutton">Top</span>');
+$("#topbutton").click(function(){$(".navbar").toggle(),$("#motdrow").toggle(),$("#cinematoggle").toggle(),"60px"==$("#mainpage").css("padding-top")?$("#mainpage").css("padding-top","10px"):$("#mainpage").css("padding-top","60px"),$("#topbutton").hasClass("label-topbutton")?$("#topbutton").removeClass("label-topbutton").addClass("label-default"):$("#topbutton").removeClass("label-default").addClass("label-topbutton")});

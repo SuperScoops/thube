@@ -1,0 +1,7 @@
+/*!
+**|  Another Left Pane Box for CSS Development
+**|  Written by Xaekai
+**|
+**@preserve
+*/
+(function(){setTimeout(function(){if($("#pad_css_wrap").length){$("#pad_css_contents").remove();$("#pad_css_wrap").remove();$("#pad_css_sheet").remove()}$("<style>").prop("id","pad_css_sheet").attr("type","text/css").appendTo("head");$("<div>").prop("id","pad_css_wrap").addClass("form-group").append($("<button>").addClass("btn btn-info btn-xs pull-right").text("Deploy").click(function(){$("#pad_css_sheet").text($("#pad_css_contents").val())})).append($("<label>").attr("for","pad_css_container").text("CSS Pad")).append($("<span/>").prop("id","pad_css_container").append($("<textarea>").prop("id","pad_css_contents").addClass("form-control").attr("placeholder","Quick CSS Testing Box").attr("rows","10").keyup(function(){var box=$(this);var value=box.val();var lastkey=Date.now();box.data("lastkey",lastkey);setTimeout(function(){if(box.data("lastkey")!==lastkey||box.val()!==value){return}localStorage[CHANNEL.name+"_pad_css"]=value},1e3)}))).appendTo("#leftpane");if(typeof Storage!=="undefined"){if(!(localStorage[CHANNEL.name+"_pad_css"]===undefined)){$("#pad_css_contents").val(localStorage[CHANNEL.name+"_pad_css"]);$("#pad_css_sheet").text(localStorage[CHANNEL.name+"_pad_css"])}}else{$("#pad_css_contents").val("/* This browser doesn't support storage. The contents of this box won't be saved between refreshes. */")}},2200)})();

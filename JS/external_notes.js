@@ -1,0 +1,7 @@
+/*!
+**|  A little scratchpad in the left pane for CyTube
+**|  Written by Xaekai
+**|
+**@preserve
+*/
+function injectPad_Notes(){if($("#pad_notes_wrap").length){$("#pad_notes_contents").remove();$("#pad_notes_wrap").remove()}$("<div>").prop("id","pad_notes_wrap").addClass("form-group").append($("<button>").addClass("close pull-right").text("×").click(function(){return $(this).parent().remove()})).append($("<label>").attr("for","pad_notes_container").text("Scratch pad")).append($("<span/>").prop("id","pad_notes_container").append($("<textarea>").prop("id","pad_notes_contents").addClass("form-control").attr("placeholder","Page notes").attr("rows","10"))).appendTo("#leftpane");if(typeof Storage!=="undefined"){if(!(localStorage[CHANNEL.name+"_scratchPad"]===undefined)){$("#pad_notes_contents").val(localStorage[CHANNEL.name+"_scratchPad"])}}else{$("#pad_notes_contents").val("This browser doesn't support storage. The contents of this box won't be saved between refreshes.")}$("#pad_notes_contents").keyup(function(){var box=$(this);var value=box.val();var lastkey=Date.now();box.data("lastkey",lastkey);setTimeout(function(){if(box.data("lastkey")!==lastkey||box.val()!==value){return}localStorage[CHANNEL.name+"_scratchPad"]=value},1e3)})}setTimeout(function(){injectPad_Notes();return injectPad_Notes=null},5e3);
