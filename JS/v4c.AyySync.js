@@ -1,9 +1,8 @@
 // ==UserScript==
-// @name         v4c.AyySync
-// @namespace    http://v4c.wtf/
-// @version      1.41
-// @description  try to take over the world!
-// @author       enzi
+// @name         mii.Sync
+// @version      1.00
+// @description  stable
+// @author       Miimer
 // @match        http://cytu.be/r/*
 // @match        https://cytu.be/r/*
 // @grant        none
@@ -663,26 +662,26 @@
     //homeButton.prependTo($('.navbar .navbar-collapse'));
     homeButton.find("a").html('<span class="glyphicon glyphicon-home"></span>');
 
-    var v4cChannels = {
-      v4c: {
-        label: 'Vidya4chan',
-        headerLogo: 'https://i.imgur.com/w5DOMDa.png',
-        id: 'v4c'
+    var MiiChannels = {
+      mii: {
+        label: 'Mii',
+        headerLogo: 'http://i.imgur.com/EmEXp7q',
+        id: 'mii'
       },
-      anime4chan: {
-        label: 'Anime4chan',
-        id: 'anime4chan'
+      happymii: {
+        label: 'Happy Mii Time',
+        id: 'miitime'
       },
-      m4c: {
-        label: 'Movie4chan',
-        id: 'm4c'
+      miimhour: {
+        label: 'Mii',
+        id: 'miim'
       }
     };
 
     var channelList = $('\
       <li class="dropdown" style="">\
         <a class="dropdown-toggle" href="#" data-toggle="dropdown" style="padding: 4px 8px 4px 6px; height: 50px;">\
-          <img src="' + v4cChannels[CHANNEL.name.toLowerCase()].headerLogo + '" style="height: 100%;" /><b class="caret"></b>\
+          <img src="' + miiChannels[CHANNEL.name.toLowerCase()].headerLogo + '" style="height: 100%;" /><b class="caret"></b>\
         </a>\
         <ul class="dropdown-menu">\
         </ul>\
@@ -691,12 +690,12 @@
     channelList.insertAfter(homeButton);
     channelList = channelList.find(".dropdown-menu");
 
-    $(Object.keys(v4cChannels)).each(function(i, e) {
+    $(Object.keys(miiChannels)).each(function(i, e) {
       var channel = $('\
         <li><a></a></li>\
       ').appendTo(channelList);
-      $(channel.find('a')).attr('href', 'http://cytu.be/r/' + v4cChannels[e].id)
-        .html(v4cChannels[e].label + ' (../r/' + v4cChannels[e].id + ')');
+      $(channel.find('a')).attr('href', 'http://cytu.be/r/' + miiChannels[e].id)
+        .html(miiChannels[e].label + ' (../r/' + miiChannels[e].id + ')');
     });
 
     $('.plcontrol-collapse > .input-group').addClass('input-group-sm');
